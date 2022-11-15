@@ -19,7 +19,7 @@
       (() => {
         $.ajax({
           type: "GET",
-          url: "/review",
+          url: "/team3/review",
           data: {},
           success: (response) => {
             for(const review of response.reviews){
@@ -43,11 +43,11 @@
           const name = btn.textContent.trim();
           let url;
           if (name === '길재형') {
-            url = 'https://naver.com'
+            url = '/team2'
           } else if (name === '유상우') {
-            url = 'https://daum.net'
+            url = '/team0'
           } else {
-            url = 'https://google.com'
+            url = '/team1'
           }
           accessURL(url);
         })
@@ -80,7 +80,7 @@
 
         $.ajax({
           type: "POST",
-          url: "/review",
+          url: "/team3/review",
           data: { review_give: review },
           success: (response) => {
             window.location.reload();

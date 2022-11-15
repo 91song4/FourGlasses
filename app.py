@@ -30,7 +30,7 @@ def team3():
     return render_template('team3.html')
 
 
-@app.route("/review", methods=["POST"])
+@app.route("/team3/review", methods=["POST"])
 def insertReviewPost():
     review_receive = request.form['review_give']
 
@@ -41,9 +41,9 @@ def insertReviewPost():
     return jsonify({'msg': '저장완료'})
 
 
-@app.route("/review", methods=["GET"])
+@app.route("/team3/review", methods=["GET"])
 def homework_get():
-    reviews = list(db.song.find({}, {'_id': False}).sort('_id',-1).limit(5))
+    reviews = list(db.song.find({}, {'_id': False}).sort('_id',-1).limit(3))
     print()
     return jsonify({'reviews': reviews})
 
