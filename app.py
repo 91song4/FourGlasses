@@ -13,21 +13,21 @@ db = client.fourGlasses
 def home():
     return render_template('index.html')
 
-# @app.route('/team0')
-# def home():
-#     return render_template('team0.html')
+@app.route('/team0')
+def team0():
+    return render_template('team0.html')
 
-# @app.route('/team1')
-# def home():
-#     return render_template('team1.html')
+@app.route('/team1')
+def team1():
+    return render_template('team1.html')
 
-# @app.route('/team2')
-# def home():
-#     return render_template('team2.html')
+@app.route('/team2')
+def team2():
+    return render_template('team2.html')
 
-# @app.route('/team3')
-# def home():
-#     return render_template('team3.html')
+@app.route('/team3')
+def team3():
+    return render_template('team3.html')
 
 
 @app.route("/review", methods=["POST"])
