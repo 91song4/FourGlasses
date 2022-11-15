@@ -6,127 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <title>myInfo</title>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const teamPage = document.querySelector('#teamHeader');
-      const teamBtns = document.querySelectorAll('#btn-box button');
-      const btnReview = document.querySelector('#btn-review');
-      const inputReview = document.querySelector('#input-review');
-      const reviews = document.querySelector('#reviews');
-
-      //페이지 로딩 후 리뷰가져오기
-      (() => {
-        $.ajax({
-          type: "GET",
-          url: "/team3/review",
-          data: {},
-          success: (response) => {
-            for(const review of response.reviews){
-              const element = document.createElement('li');
-              element.textContent = review.review;
-              reviews.appendChild(element);
-            }
-
-          }
-        })
-      })()
-
-      // 화면 상단 팀소개페이지 영역을 누르면 메인페이지로 이동
-      teamPage.addEventListener('click', () => {
-        window.location.href = '/'
-      })
-
-      // 팀원 버튼을 누르면 팀원소개페이지로 이동
-      for (const btn of teamBtns) {
-        btn.addEventListener('click', () => {
-          const name = btn.textContent.trim();
-          let url;
-          if (name === '길재형') {
-            url = '/team2'
-          } else if (name === '유상우') {
-            url = '/team0'
-          } else {
-            url = '/team1'
-          }
-          accessURL(url);
-        })
-      }
-
-      // 댓글등록 버튼을 누르면 DB에 저장
-      btnReview.addEventListener('click', () => insertDB(inputReview.value))
-
-      // 댓글 input에서 enter키 활성
-      inputReview.addEventListener('keydown', (event) => {
-        const ENTER = 13;
-        if (event.keyCode === ENTER) {
-          insertDB(inputReview.value);
-        }
-      })
-
-      // url을 받아 이동
-      function accessURL(url) {
-        window.location.href = url;
-      }
-
-      //DB에 저장하는 함수
-      function insertDB(review) {
-        // 값이 공백일 경우
-        if (review === '') {
-          alert('입력해주세요');
-          inputReview.focus();
-          return
-        }
-
-        $.ajax({
-          type: "POST",
-          url: "/team3/review",
-          data: { review_give: review },
-          success: (response) => {
-            window.location.reload();
-          }
-        })
-      }
-    })
-  </script>
-  <style>
-    * {
-      user-select: none;
-    }
-
-    .about-team {
-      width: 100%;
-      height: 100px;
-      text-align: center;
-      line-height: 100px;
-      background-color: white;
-    }
-
-    .about-team:hover {
-      background-color: green;
-    }
-
-    .about-me {
-      background-color: royalblue;
-      width: 100%;
-      height: 100px;
-    }
-
-    .review {
-      background-color: olivedrab;
-      width: 100%;
-      height: 100px;
-    }
-
-    .btn-box {
-      background-color: darkkhaki;
-      width: 100%;
-      height: 100px;
-    }
-  </style>
+  <script src="../static/team3.js" defer></script>
+  <link rel="stylesheet" type="text/css" href="../static/team3.css">
+  <title>team3 info</title>
 </head>
 
 <body>
+  <a>test</a>
   <div class="about-team" id="teamHeader">팀소개페이지</div>
   <div class="about-me" id="aboutMe">간단한 자기소개</div>
   <div class="review" id="review">
